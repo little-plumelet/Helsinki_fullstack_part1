@@ -1,4 +1,5 @@
 import { Header } from "./Header";
+import { StatisticLine } from "./StatisticLine";
 
 export const Statistics = ({
   good,
@@ -12,12 +13,12 @@ export const Statistics = ({
     <section>
       <Header title={"Statistics"} />
       <ul>
-        <li>{`${goodTitle}: ${good}`}</li>
-        <li>{`${neutralTitle}: ${neutral}`}</li>
-        <li>{`${badTitle}: ${bad}`}</li>
-        <li>{`all: ${good + bad + neutral}`}</li>
-        <li>{`average: ${(good - bad) / (good + bad + neutral)}`}</li>
-        <li>{`positive: ${good / ((good + bad + neutral) / 100)}%`}</li>
+        <StatisticLine text={goodTitle} value={good} />
+        <StatisticLine text={neutralTitle} value={neutral} />
+        <StatisticLine text={badTitle} value={bad} />
+        <StatisticLine text='all' value={good + bad + neutral} />
+        <StatisticLine text='average' value={(good - bad) / (good + bad + neutral)} />
+        <StatisticLine text='positive' value={(good / ((good + bad + neutral) / 100) + '%')} />
       </ul>
     </section>
   );
