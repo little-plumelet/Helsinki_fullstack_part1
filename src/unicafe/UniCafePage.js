@@ -7,18 +7,25 @@ export const UniCafePage = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
+  const goodTitle = 'good';
+  const neutralTitle = 'neutral';
+  const badTitle = 'bad';
+
   return (
     <section>
         <Header title={'Give feedback'} />
-        <Button title='good' handleClick={() => setGood((prevState) => prevState + 1)}/>
-        <Button title='neutral' handleClick={() => setNeutral((prevState) => prevState + 1)}/>
-        <Button title='bad' handleClick={() => setBad((prevState) => prevState + 1)}/>
+        <Button title={goodTitle} handleClick={() => setGood((prevState) => prevState + 1)}/>
+        <Button title={neutralTitle} handleClick={() => setNeutral((prevState) => prevState + 1)}/>
+        <Button title={badTitle} handleClick={() => setBad((prevState) => prevState + 1)}/>
         <section>
-          <Header course={'Statistics'} />
+          <Header title={'Statistics'} />
           <ul>
-            <li>{`good: ${good}`}</li>
-            <li>{`neutral: ${neutral}`}</li>
-            <li>{`bad: ${bad}`}</li>
+            <li>{`${goodTitle}: ${good}`}</li>
+            <li>{`${neutralTitle}: ${neutral}`}</li>
+            <li>{`${badTitle}: ${bad}`}</li>
+            <li>{`all: ${(good + bad + neutral)}`}</li>
+            <li>{`average: ${(good - bad) / (good + bad + neutral) }`}</li>
+            <li>{`positive: ${good / ((good + bad + neutral) / 100) }%`}</li>
           </ul>
         </section>
       </section>
