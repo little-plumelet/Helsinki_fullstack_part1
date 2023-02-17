@@ -27,14 +27,17 @@ export const UniCafePage = () => {
         title={badTitle}
         handleClick={() => setBad((prevState) => prevState + 1)}
       />
-      <Statistics
-        good={good}
-        neutral={neutral}
-        bad={bad}
-        goodTitle={goodTitle}
-        neutralTitle={neutralTitle}
-        badTitle={badTitle}
-      />
+      {(!!good || !!bad || !!neutral) && (
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          goodTitle={goodTitle}
+          neutralTitle={neutralTitle}
+          badTitle={badTitle}
+        />
+      )}
+      {!good && !bad && !neutral && <p>{"No feedback given"}</p>}
     </section>
   );
 };

@@ -9,7 +9,7 @@ export const Statistics = ({
   badTitle,
 }) => {
   return (
-    <>
+    <section>
       <Header title={"Statistics"} />
       <ul>
         <li>{`${goodTitle}: ${good}`}</li>
@@ -19,6 +19,6 @@ export const Statistics = ({
         <li>{`average: ${(good - bad) / (good + bad + neutral)}`}</li>
         <li>{`positive: ${good / ((good + bad + neutral) / 100)}%`}</li>
       </ul>
-    </>
+    </section>
   );
 };
