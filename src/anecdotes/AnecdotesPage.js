@@ -14,16 +14,29 @@ export const AnecdotesPage = () => {
   ]
    
   const [selected, setSelected] = useState(0);
+  const [votes, setVotes] = useState((new Array(anecdotes.length)).fill(0));
 
-  const handleClick = () => {
+  const handleClickNext = () => {
     const randomNumber = Math.floor(Math.random() * (7 - 0 + 1) + 0);
-    setSelected(randomNumber)
+    setSelected(randomNumber);
   }
+
+  const handleClickVote = () => {
+    
+    setVotes((prev) => {
+      const result =  [...prev];
+      result[selected] += 1;
+      return result;
+    });
+  }
+    
 
   return (
     <>
       <div>{anecdotes[selected]}</div>
-      <Button title='next anecdote' handleClick={handleClick} />
+      <div>has votes: {votes[selected]}</div>
+      <Button title='vote' handleClick={handleClickVote} />
+      <Button title='next anecdote' handleClick={handleClickNext} />
     </>
   )
 }
